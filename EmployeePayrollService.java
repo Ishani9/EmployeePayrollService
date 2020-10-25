@@ -52,4 +52,19 @@ public class EmployeePayrollService {
 		}
 		return entries;
 	}
+	
+	/**
+	 * UC 5
+	 * 
+	 * Prints data from file to console
+	 * 
+	 * @param ioService
+	 */
+	public void printData(IOService ioService) {
+		if (ioService.equals(IOService.FILE_IO)) {
+			new EmployeePayrollFile().printData();
+		}
+		
+	}
+
 }
