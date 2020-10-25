@@ -33,4 +33,17 @@ public class EmployeePayrollFile {
 		return totalEntries;
 
 	}
+	
+	/**
+	 * UC 5
+	 * 
+	 * Prints data from file to console
+	 */
+	public void printData() {
+		try {
+			Files.lines(new File(PAYROLL_FILE_NAME).toPath()).forEach(System.out::println);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
