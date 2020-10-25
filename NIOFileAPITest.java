@@ -1,15 +1,11 @@
 package com.bl.assignment;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.IntStream;
-import java.io.*;
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 public class NIOFileAPITest {
@@ -49,6 +45,13 @@ public class NIOFileAPITest {
 		Files.newDirectoryStream(playPath).forEach(System.out::println);
 		Files.newDirectoryStream(playPath, path -> path.toFile().isFile() && path.toString().startsWith("temp"))
 				.forEach(System.out::println);
+	}
+	
+	@Test
+	public void GivenADirectoryWhenWatchedListsAllTheActivities() throws IOException {
+		Path dir = Paths.get(HOME + "/" + PLAY_WITH_NIO);
+		Files.list(dir).filter(Files::isRegularFile).forEach(System.out::println);
+		new Java8WatchServiceExample(dir).processEvents();
 	}
 
 }
